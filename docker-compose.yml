@@ -1,0 +1,16 @@
+services:
+  bot:
+    build: .
+    container_name: spotify-cover-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Yekaterinburg
+    volumes:
+      - ./logs:/app/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
